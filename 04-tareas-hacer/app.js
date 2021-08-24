@@ -7,9 +7,14 @@ console.clear()
 const main = async () => {
     console.log('Hola mundo')
 
-    mostrarMenu()
+    let opt = '';
 
-    //pausa()
+    do {
+        
+        opt = await mostrarMenu()
+        await pausa()
+
+    } while(opt !== '0')
 
 }
 
