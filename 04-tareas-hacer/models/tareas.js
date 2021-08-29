@@ -63,7 +63,8 @@ class Tareas {
 
     borrartarea(id = '') {
         if (this._listado[id]) {
-            delete this._listado[id]
+           delete this._listado[id]
+           console.log("Tarrea Barrada")
         }
     }
 

@@ -1,5 +1,5 @@
 const { guardarDB, leerDB } = require('./helpers/guardarArchivo');
-const { inquireMenu, pausa, leerInput, listadotareasBorrar } = require('./helpers/inquirer');
+const { inquireMenu, pausa, leerInput, listadotareasBorrar, confitmar } = require('./helpers/inquirer');
 const Tareas = require('./models/tareas');
 
 require('colors');
@@ -38,7 +38,10 @@ const main = async () => {
                 break;
             case '6':
                 const id = await listadotareasBorrar(tareas.listadoArr)
-                console.log({id})
+                if(id !== '0'){
+                    const ok = await confitmar('¿Esta seguro?')
+                    if (ok) tareas.borrartarea(id)
+                }
                 break;
                 
         }
