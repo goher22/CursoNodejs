@@ -77,9 +77,30 @@ const leerInput = async (message) => {
     return desc
 }
 
+const listadotareasBorrar = async(tareas = []) => {
+    const choices2 = tareas.map((tarea, i) => {
+        const idx = `${i+1}`.green
+        return {
+            value: tarea.id,
+            name: `${idx}. ${tarea.desc}`
+        }
+    })
+    const preguntas2 = [
+        {
+            type: 'list',
+            name: 'id',
+            message: 'Borrar',
+            choices: choices2
+        }
+    ]
+    const {id} = await inquirer.prompt(preguntas2)
+    return id
+}
+
 module.exports = {
     inquireMenu,
     pausa, 
-    leerInput
+    leerInput,
+    listadotareasBorrar
 }
 
