@@ -32,6 +32,7 @@ class Tareas {
     }
 
     listadoCompleto() {
+        console.log()
         this.listadoArr.forEach((tarea, i) => {
             const idx = `${i+i}`.green
             const {desc, completadoEn} = tarea
@@ -39,6 +40,24 @@ class Tareas {
                             ? 'Completado'.green
                             : 'Pendiente'.red
             console.log(`${idx} ${desc} :: ${estado}`) 
+        })
+    }
+
+    listarPendienteCompletadas(completadas = true) {
+        console.log()
+        let contador = 0
+        this.listadoArr.forEach(tarea => {
+            const {desc, completadoEn} = tarea
+            const estado = (completadoEn) 
+                            ? 'Completado'.green
+                            : 'Pendiente'.red
+            if(completadas && completadoEn) {
+                contador++
+                console.log(`${contador.toString().green} ${desc} :: ${completadoEn}`)
+            }else if(!completadas && !completadoEn){
+                contador++
+                console.log(`${contador.toString().green} ${desc} :: ${estado}`)
+            }
         })
     }
 
