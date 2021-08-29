@@ -115,11 +115,35 @@ const confitmar = async (message) => {
     return ok
 }
 
+const mostrarlistadochecklist = async(tareas = []) => {
+    const choices = tareas.map((tarea, i) => {
+        const idx = `${i+1}`.green
+        return {
+            value: tarea.id,
+            name: `${idx}. ${tarea.desc}`,
+            checked: (tarea.completadoEn) ? true : false 
+        }
+    })
+
+    const pregunta = [
+        {
+            type: 'checkbox',
+            name: 'ids',
+            message: 'Selecciones',
+            choices
+        }
+    ]
+    const {ids} = await inquirer.prompt(pregunta)
+    return ids
+}
+
+
 module.exports = {
     inquireMenu,
     pausa, 
     leerInput,
     listadotareasBorrar,
-    confitmar
+    confitmar,
+    mostrarlistadochecklist
 }
 
