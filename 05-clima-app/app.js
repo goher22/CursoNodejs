@@ -1,4 +1,4 @@
-const { inquireMenu, pausa, leerInput } = require("./helpers/inquirer")
+const { inquireMenu, pausa, leerInput, listarLugares } = require("./helpers/inquirer")
 const Busquedas = require("./models/busqueda")
 require('dotenv').config()
 
@@ -12,12 +12,14 @@ const main = async() =>{
 
         switch(opt){
             case 1:
-                const lugar = await leerInput('Ciudad: ')
-                busqueda.ciudad(lugar)
+                const termino = await leerInput('Ciudad: ')
+                const lugares = await busqueda.ciudad(termino)
+                const id = await listarLugares(lugares)
+                const lugarSel = lugares.find(l => l.id === id)
                 console.log('\nInformacion del alciudad\n'.green)
-                console.log('Ciudad:', )
-                console.log('Lat:', )
-                console.log('Lng:', )
+                console.log('Ciudad:', lugarSel.nombre)
+                console.log('Lat:', lugarSel.lat)
+                console.log('Lng:', lugarSel.lng)
                 console.log('Temperatura:', )
                 console.log('Mínima:', )
                 console.log('Máxima:', )
