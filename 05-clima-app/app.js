@@ -13,10 +13,16 @@ const main = async() =>{
         switch(opt){
             case 1:
                 const termino = await leerInput('Ciudad: ')
+
                 const lugares = await busqueda.ciudad(termino)
                 const id = await listarLugares(lugares)
+
+                if(id === '0') continue
+
                 const lugarSel = lugares.find(l => l.id === id)
+                busqueda.agregarHistorial(lugarSel.nombre)
                 const clima = await busqueda.climaLugar(lugarSel.lat, lugarSel.lng)
+
                 console.log('\nInformacion del alciudad\n'.green)
                 console.log('Ciudad:', lugarSel.nombre.green)
                 console.log('Lat:', lugarSel.lat)
@@ -27,6 +33,10 @@ const main = async() =>{
                 console.log('Como esta el clima:', clima.desc.green)
                 break
             case 2:
+                busqueda.historial.forEach((lugar, i)=>{
+                    const idx = `${i+1}.`.green
+                    console.log(`${idx} ${lugar}`)
+                })
                 break
             case 0:
                 break
