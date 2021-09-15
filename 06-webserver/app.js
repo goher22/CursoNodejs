@@ -17,7 +17,10 @@ app.get('/generic', (req, res) =>{
   //res.send('Generic Page');
 })
 app.get('/', (req, res) =>{
-  res.render('home')
+  res.render('home', {
+    nombre: 'Carlos Gomez Hernande',
+    titulo: 'Curso de nodejs'
+  })
   //res.sendFile(__dirname+'/public/index.html')
   //res.send('Home Page');
 })
