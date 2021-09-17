@@ -13,13 +13,19 @@ const userPut = (req, res = response) => {
     })
 }
 
-const userPost = (req, res) => {
+const userPost = (req, res = response) => {
+
+    const {nombre, edad} = req.body
+
+
     res.status(201).json({
-        msg: 'post API'
+        msg: 'post API - Controllador',
+        nombre,
+        edad
     })
 }
 
-const userDelete = (req, res) => {
+const userDelete = (req, res = response) => {
     res.json({
         msg: 'delete API'
     })
