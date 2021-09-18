@@ -45,7 +45,7 @@ const userPost = async (req, res = response) => {
     //Guardat en la BD    
     await usuario.save()
 
-    res.status(201).json({
+    res.json({
         usuario
     })
 }
