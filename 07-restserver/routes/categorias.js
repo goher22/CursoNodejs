@@ -1,17 +1,19 @@
-const {Router} = require('express')
+const { Router } = require('express')
 const { check } = require('express-validator')
-const { crearCategoria } = require('../controllers/categorias')
+const { crearCategoria, obtenerCategoria } = require('../controllers/categorias')
+const { existeCategoriaPorId } = require('../helpers/db-validators')
 const { validarJWT, validarCampos } = require('../middelwares')
 
 const router = Router()
 
 //Obtener todas las categorias - publico
-router.get('/', (req, res)=>{
-    res.json('get Categoria')
-})
+router.get('/', obtenerCategoria)
 
 //Obtener uan categoria por id - publico
-router.get('/:id', (req, res)=>{
+router.get('/:id', [
+    //check('id', 'No es un ID válido').isMongoId(),
+    //check('id').custom(existeCategoriaPorId),
+], (req, res)=>{
     res.json('get Categoria por id')
 })
 

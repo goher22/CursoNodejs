@@ -5,5 +5,5 @@ const validarRoles = require('../middelwares/validar-roles')
 module.exports = {
     ...validarCampos,
     ...validarJWT,
-    ...validarRoles
+    ...validarRoles,
 }
