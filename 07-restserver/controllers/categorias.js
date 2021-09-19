@@ -50,7 +50,30 @@ const crearCategoria = async(req, res=response) => {
 
 }
 
-//actualizarCategoria
+const actualizarCategoria = async (req, res = response) => {
+    
+    const {id} = req.params
+
+    const {_id, estatus, ...data} = req.body
+
+    data.nombre = req.body.nombre.toUpperCase()
+    data.usuario = req.usuario._id
+
+    const categoriaDB = await Categoria.findOne({nombre: data.nombre})
+
+    if(categoriaDB) {
+        return res.status(400).json({
+            msg: `La categoria ${categoriaDB.nombre}, ya existe`
+        })
+    }
+
+    const categoria = await Categoria.findByIdAndUpdate(id, data, {new:true})
+
+    res.json(categoria)
+
+}
+
+
 
 //borrarCategoria - estado:false
 
@@ -58,4 +81,5 @@ module.exports = {
     crearCategoria,
     obtenerCategorias,
     obtenerCategoria,
+    actualizarCategoria,
 }
