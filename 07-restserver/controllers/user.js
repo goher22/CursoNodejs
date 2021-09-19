@@ -31,8 +31,7 @@ const userPut = async (req, res = response) => {
 
     const usuario = await Usuario.findByIdAndUpdate(id, resto)
 
-
-    res.status(400).json({
+    res.json({
         msg: 'put API',
         id
     })
