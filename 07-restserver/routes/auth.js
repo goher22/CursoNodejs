@@ -12,4 +12,9 @@ router.post('/login', [
     validarCampos
 ],authController.login)
 
+router.post('/google', [
+    check('id_token', 'El id_token es necesario').not().isEmpty(),
+    validarCampos
+],authController.googleSignIn)
+
 module.exports = router
