@@ -33,7 +33,7 @@ const userPut = async (req, res = response) => {
 
     res.json({
         msg: 'put API',
-        id
+        usuario
     })
 }
 
