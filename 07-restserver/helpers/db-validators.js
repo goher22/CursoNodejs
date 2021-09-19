@@ -16,20 +16,8 @@ const existeUsuarioPorId = async(id) =>{
 }
 
 const existeCategoriaPorId = async(id) => {
-    console.log(id)
-    try {
-        const existeCategoria = await Categoria.findById(id)
-    } catch (error) {
-        console.log(error)
-    }
-    
-    /*try {
-        const existeCategoria = await Categoria.findById(id)
-        if(!existeCategoria) console.log("Hoal que tal")
-        if(!existeCategoria) throw new Error(`El id ${id} no existe`)   
-    } catch (error) {
-        
-    }*/
+    const existeCategoria = await Categoria.findById(id)
+    if(!existeCategoria) throw new Error(`El id ${id} no existe`)
 }
 
 module.exports = {
