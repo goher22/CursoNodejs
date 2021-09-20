@@ -26,9 +26,6 @@ router.put('/:id',[
     validarJWT,
     check('id', 'No es un ID válido').isMongoId(),
     check('id').custom(existeProductoPorId),
-    check('nombre', 'El nombre es obligatorio').not().isEmpty(),
-    check('categoria', 'El id de la categoria es obligatorio').not().isEmpty(),
-    check('categoria').custom(existeCategoriaPorId),
     validarCampos
 ],actualizarProduto)
 
