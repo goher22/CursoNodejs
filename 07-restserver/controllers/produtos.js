@@ -31,10 +31,10 @@ const obtenerProducto = async (req =request, res = response) => {
 const crearProducto = async(req, res = response) => {
 
     
-    const {nombre, precio, decripcion, categoria} = req.body
-    const nombreP = nombre.toUpperCase()
+    const {estado, usuario, ...body} = req.body
+    const nombre = body.nombre.toUpperCase()
 
-    const productoDB = await Producto.findOne({nombre: nombreP})
+    const productoDB = await Producto.findOne({nombre})
     
 
     if(productoDB){
@@ -45,10 +45,8 @@ const crearProducto = async(req, res = response) => {
 
     
     const data = {
-        nombre: nombreP,
-        precio,
-        decripcion,
-        categoria,
+        ...body,
+        nombre: nombre.toUpperCase(),
         usuario: req.usuario._id
     }
 
@@ -63,10 +61,9 @@ const actualizarProduto = async(req, res=response)=>{
 
     const {id} = req.params
 
-    const {_id, estatus, ...data} = req.body
+    const {_id, usuario, estatus, ...data} = req.body
 
     data.nombre = req.body.nombre.toUpperCase()
-    data.usuario = req.usuario._id
 
     const productoDB = await Producto.findOne({nombre: data.nombre})
     
