@@ -43,7 +43,6 @@ const login = async (req, res = response) => {
         })
 
     }catch(error){
-        console.log(error)
         res.status(500).json({msg: "Hable con el adminstrador"})
     }
 
@@ -82,7 +81,6 @@ const googleSignIn = async (req, res= response) => {
         })
         
     } catch (error) {
-        console.log(error)
         res.status(400).json({
             ok: false,
             msg: 'El Token no se pudo verificar'
