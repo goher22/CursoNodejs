@@ -1,8 +1,5 @@
 const {Router} = require('express')
-const { check } = require('express-validator')
 const { cargarArchivo } = require('../controllers/uploads')
-
-const { validarCampos } = require('../middelwares/validar-campos')
 
 const router = Router()
 
