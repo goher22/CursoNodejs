@@ -10,6 +10,16 @@ const cargarArchivo = (req, res =response) =>{
 
     const {archivo} = req.files
   
+    const nombreContro = archivo.name.split('.')
+    const extension = nombreContro[nombreContro.length-1]
+
+    //validar la extenciones
+    const extensionValidas = ['png', 'jpg', 'jpeg', 'gif']
+    if(!extensionValidas.includes(extension))
+      return res.status(400).json({
+        msg: `La extención ${ extension } no es permitida, ${extensionValidas}`
+      })
+
     const uploadPath = path.join(__dirname,'../uploads/', archivo.name);
   
     archivo.mv(uploadPath, (err) => {
