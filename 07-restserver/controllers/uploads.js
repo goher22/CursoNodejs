@@ -121,7 +121,8 @@ const mostrarImagen = async (req, res = response) =>{
 
     }
 
-    res.json({msg: 'Falta place holder'})
+    const payhImagen = path.join(__dirname, '../assets', 'no-image.png')
+    res.sendFile(payhImagen)
 
   } catch (msg) {
     console.log(msg)
