@@ -15,6 +15,9 @@ class Server {
 
         //Ruta de mi aplicacion
         this.routes()
+
+        //Sockets
+        this.sockets()
     }
 
     async conectarDB(){
@@ -33,6 +36,16 @@ class Server {
 
     routes() { }
     
+    sockets(){
+
+        this.io.on('connection', socket => { 
+            console.log('cliente conectado')
+            socket.on('disconnect', ()=> {
+                console.log('cloente desconectado')
+            })
+        });
+
+    }
     
     listen(){
         this.server.listen(this.port, () => {

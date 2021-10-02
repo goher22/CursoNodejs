@@ -1,2 +1,2 @@
 
-console.log("Hola mundo")
+const socket = io()
