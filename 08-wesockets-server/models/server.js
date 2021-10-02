@@ -43,6 +43,9 @@ class Server {
             socket.on('disconnect', ()=> {
                 console.log('cloente desconectado')
             })
+            socket.on('emviar-mensaje', (payload) => {
+                console.log(payload)
+            })
         });
 
     }
