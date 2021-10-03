@@ -8,15 +8,17 @@ const btnEnviar = document.getElementById("btnEnviar")
 const socket = io()
 
 socket.on('connect', () => {
-    console.log("Conectado")
     lblOffline.style.display = 'node'
     lblOnline.style.display = ''
 })
 
 socket.on('disconnect', () => {
-    console.log("Desconenctado  ")
     lblOnline.style.display = 'node'
     lblOffline.style.display = ''
+})
+
+socket.on('enviar-mensje', (payload) => {
+    console.log(payload)
 })
 
 btnEnviar.addEventListener('click', () => {

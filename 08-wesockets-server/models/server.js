@@ -44,7 +44,7 @@ class Server {
                 console.log('cloente desconectado')
             })
             socket.on('emviar-mensaje', (payload) => {
-                console.log(payload)
+                this.io.emit('enviar-mensje', payload)
             })
         });
 
