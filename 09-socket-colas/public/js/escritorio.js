@@ -4,6 +4,7 @@ const lblEscritorio = document.querySelector('h1')
 const btnAtender = document.querySelector('button')
 const lblTicket = document.querySelector('small')
 const divAlerta = document.querySelector('.alert')
+const lblPendientes = document.querySelector('#lblPendientes')
 
 const searchParams = new URLSearchParams(window.location.search)
 
@@ -26,8 +27,9 @@ socket.on('disconnect', () => {
     btnAtender.disabled = true
 });
 
-socket.on('ultimo-ticket', (ultimo) => {
-    // lblNuevoTicket.innerHTML = 'Ticket'+ultimo
+socket.on('tickets-pendientes', (ultimo) => {
+    lblPendientes.style.display = ultimo == 0 ? 'none' : ''
+    lblPendientes.innerHTML = ultimo
 })
 
 btnAtender.addEventListener( 'click', () => {
