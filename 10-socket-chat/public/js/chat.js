@@ -46,6 +46,19 @@ const conectarSocket = async() => {
         console.log('Sockets offline')
     })
 
+    socket.on('recibir-mensajes', () => {
+        //TODO
+    })
+
+    socket.on('usuarios-activos', () => {
+        //TODO
+    })
+    
+    socket.on('mensaje-privado', () => {
+        //TODO
+    })
+
+
 
 }
 
