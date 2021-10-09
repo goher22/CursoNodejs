@@ -18,7 +18,7 @@ const validarJWT = async() => {
     const {usuario: userDB, token: tokenDB} = await resp.json()
 
     localStorage.setItem('token', tokenDB)
-    usuario.userDB
+    usuario = userDB
 
 }
 
